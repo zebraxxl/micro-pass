@@ -1,0 +1,97 @@
+{% extends "basic.html" %}
+
+{% block title %}MicroPass{% endblock %}
+
+{% block head %}
+    {{ super() }}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <style type="text/css">
+        body {
+            padding: 16px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-grid">
+        <div class="uk-width-4-5 uk-container-center">
+            <div class="uk-width-1-1" id="errorsPlace">
+            </div>
+            <div class="uk-panel uk-panel-box uk-form uk-text-center uk-width-1-1">
+                <div class="uk-float-left">
+                    <button id="addNewPasswordButton" class="uk-button uk-button-primary"><i class="uk-icon-plus"></i> Добавить</button>
+                </div>
+
+                <input type="text" class="uk-width-3-6" placeholder="Фильтр" id="tbFilter" />
+
+                <button id="logoutButton" class="uk-button uk-float-right"><i class="uk-icon-sign-out"></i> Выход</button>
+                <div class="uk-float-right uk-margin-right" style="display: none;" id="processSpinner">
+                    <i class="uk-icon-spinner uk-icon-spin uk-icon-medium"></i>
+                </div>
+            </div>
+
+            <table class="uk-table uk-form uk-table-striped" id="passwordsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th class="uk-width-5-10">Название</th>
+                        <th class="uk-width-5-10">Значение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="uk-modal" id="showPasswordModal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-modal-header">    
+                <div id="showPasswordModalTitle"></div>
+            </div>
+
+            <div class="uk-form">
+                <textarea id="passwordPlace" class="uk-width-1-1" style="height: 200px;"></textarea>
+                <input type="text" value="10" class="generatePasswordCharsCount uk-width-5-10 uk-margin-right uk-margin-top" />
+                <button class="generatePassword uk-width-4-10 uk-button uk-margin-top" data-target="passwordPlace">Сгенерировать</button>
+            </div>
+
+            <div class="uk-modal-footer">
+                <button class="uk-button uk-button-primary" id="savePasswordButton"><i class="uk-icon-floppy-o"></i> Сохранить</button>
+                <button class="uk-button" id="cancelSavePasswordButton"><i class="uk-icon-undo"></i> Отменить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-modal" id="newPasswordModal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-modal-header">    
+                Новый пароль
+            </div>
+
+            <div class="uk-form uk-form-horizontal">
+                <div class="uk-form-row">
+                    <label class="uk-form-label" for="newPasswordName">Название</label>
+                    <input type="text" id="newPasswordName" placeholder="Название пароля" class="uk-width-3-5" />
+                </div>
+                <div class="uk-form-row">
+                    <label class="uk-form-label" for="newPasswordValue">Значение пароля</label>
+                    <div class="uk-width-3-5" style="display: inline-table;">
+                        <textarea id="newPasswordValue" class="uk-width-1-1" style="height: 200px;"></textarea>
+                        <input type="text" value="10" class="generatePasswordCharsCount uk-width-5-10 uk-margin-right uk-margin-top" />
+                        <button class="generatePassword uk-width-4-10 uk-button uk-margin-top" data-target="newPasswordValue">Сгенерировать</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-modal-footer">
+                <button class="uk-button uk-button-primary" id="saveNewPasswordButton"><i class="uk-icon-plus"></i> Добавить</button>
+                <button class="uk-button" id="cancelNewPasswordButton"><i class="uk-icon-undo"></i> Отменить</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

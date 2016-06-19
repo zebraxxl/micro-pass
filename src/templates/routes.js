@@ -1,0 +1,10 @@
+URL_MAIN_PAGE = "/";
+URL_AUTH = {{ url_for("auth") | tojson | safe }};
+URL_LOGOUT = {{ url_for("logout") | tojson | safe }};
+URL_GET_SESSION_KEY = {{ url_for("get_session_key") | tojson | safe }};
+URL_GET_PRIVATE_DATA = {{ url_for("get_private_data") | tojson | safe }};
+URL_SET_PRIVATE_DATA = {{ url_for("set_private_data") | tojson | safe }};
+URL_CREATE_PASSWORD = {{ url_for("create_password") | tojson | safe }};
+URL_GET_PASSWORD = "/user/password/$id$/";
+URL_SET_PASSWORD = "/user/password/$id$/";
+URL_DELETE_PASSWORD = "/user/password/$id$/";

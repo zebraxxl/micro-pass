@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/uikit.almost-flat.min.css') }}">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+    <script src="{{ url_for('routes_js') }}"></script>
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/crypt.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/micro_pass.js') }}"></script>
+
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}    
+    {% endblock %}
+</body>
+</html>
